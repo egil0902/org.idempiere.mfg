@@ -17,7 +17,14 @@ public class Callout_PP_Order extends CalloutOrder implements IColumnCallout {
 		}
 		if (mField.getColumnName().equals("M_Product_ID"))
 			return product(ctx, WindowNo, mTab, mField,value);
+		if (mField.getColumnName().equals("Weight"))
+			return setNetWeight(ctx, WindowNo, mTab, mField,value);
+		if (mField.getColumnName().equals("Weight2"))
+			return setNetWeight(ctx, WindowNo, mTab, mField,value);		
+		
 		return null;
 	}
+
+
 
 }

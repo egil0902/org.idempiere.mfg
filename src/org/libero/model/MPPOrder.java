@@ -392,6 +392,7 @@ public class MPPOrder extends X_PP_Order implements DocAction
 	@Override
 	protected boolean beforeSave(boolean newRecord)
 	{
+		log.warning("testb");
 		if (getAD_Client_ID() == 0)
 		{
 			m_processMsg = "AD_Client_ID = 0";
@@ -432,7 +433,8 @@ public class MPPOrder extends X_PP_Order implements DocAction
 		{	
 			orderStock();
 		}
-
+		//	Set Net Weight
+		setNetWeight();
 		
 		updateQtyBatchs(getCtx(), this, false);
 
@@ -1142,7 +1144,7 @@ public class MPPOrder extends X_PP_Order implements DocAction
 				obl.setAD_Org_ID(getAD_Org_ID());
 				obl.setM_Warehouse_ID(getM_Warehouse_ID());
 				obl.setM_Locator_ID(getM_Locator_ID());
-				obl.setQtyPlusScrap(parentQty);
+				obl.setQtyPlusScrap(parentQty);		
 				obl.saveEx(get_TrxName()); 
 		 /*	DO NOT DO. LOW LEVEL requires each PP_Order to be handled separaete LEVEL to expand.
 				//iterate BOM children -- relegate to multiple PPOrder parent product tabs
@@ -1813,5 +1815,15 @@ public class MPPOrder extends X_PP_Order implements DocAction
 			//return DOCSTATUS_Closed;
 		}
 	}
- 
+
+	/**
+	 * Establece el valor del peso neto
+	 */
+	public void setNetWeight(){
+			log.warning("test");
+		  BigDecimal pesoTara =  (BigDecimal) (get_Value("Weight") != null? get_Value("Weight"): Env.ZERO);
+		  BigDecimal pesoBruto = (BigDecimal) (get_Value("Weight2") != null? get_Value("Weight2"): Env.ZERO);
+		  BigDecimal pesoNeto = pesoBruto.subtract(pesoTara);
+		  set_ValueOfColumn("Weight3",pesoNeto);
+	}
 } // MPPOrder

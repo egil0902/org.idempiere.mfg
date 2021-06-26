@@ -198,5 +198,11 @@ public class CalloutOrder extends CalloutEngine
 		//
 		return pp;
 	}
+	
+	public String setNetWeight(Properties ctx, int windowNo, GridTab mTab, GridField mField, Object value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }	//	CalloutOrder
 
