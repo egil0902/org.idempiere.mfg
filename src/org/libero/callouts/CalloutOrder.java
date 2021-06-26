@@ -200,8 +200,12 @@ public class CalloutOrder extends CalloutEngine
 	}
 	
 	public String setNetWeight(Properties ctx, int windowNo, GridTab mTab, GridField mField, Object value) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		BigDecimal pesoTara  = (BigDecimal)mTab.getValue("Weight");
+		BigDecimal pesoBruto = (BigDecimal)mTab.getValue("Weight2");
+		BigDecimal pesoNeto = pesoBruto.subtract(pesoTara);
+		mTab.setValue("Weight3",pesoNeto);
+		return "";
 	}
 
 }	//	CalloutOrder
