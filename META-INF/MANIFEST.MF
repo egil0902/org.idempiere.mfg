@@ -44,7 +44,7 @@ Bundle-Activator: org.adempiere.plugin.utils.Incremental2PackActivator
 Bundle-Vendor: E-Evolution, Red1.org
 Bundle-ClassPath: .,
  lib/junit.jar,
- lib/slf4j-api.jar,
  lib/jfreechart.jar,
- lib/jcommon.jar
+ lib/jcommon.jar,
+ lib/slf4j-api.jar
 
