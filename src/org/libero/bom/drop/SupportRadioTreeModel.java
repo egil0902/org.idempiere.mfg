@@ -9,9 +9,7 @@ import org.zkoss.zul.AbstractTreeModel;
 
 public class SupportRadioTreeModel extends AbstractTreeModel<ISupportRadioNode>  {
 
-	/**
-	 * 
-	 */ 	
+		
 	private static final long serialVersionUID = -4260907076488563930L;
 	
 	public SupportRadioTreeModel(ISupportRadioNode root) {
