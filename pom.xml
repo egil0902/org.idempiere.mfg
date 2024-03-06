@@ -4,7 +4,7 @@
 		<groupId>org.idempiere</groupId>
 		<artifactId>org.idempiere.parent</artifactId>
 		<version>${revision}</version>
-		<relativePath>../../../Documents/source/idempiere/org.idempiere.parent/pom.xml</relativePath>
+		<relativePath>../../../idempiereSources/idempiere10/org.idempiere.parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>org.idempiere.mfg</artifactId>
 	<packaging>eclipse-plugin</packaging>
