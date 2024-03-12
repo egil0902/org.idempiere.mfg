@@ -253,7 +253,7 @@ public class CostEngine
 			int M_AttributeSetInstance_ID)
 	{
 		//	Delete Unprocessed zero Differences
-		String sql = "DELETE " + MCostDetail.Table_Name
+		String sql = "DELETE FROM " + MCostDetail.Table_Name
 		+ " WHERE Processed='N' AND COALESCE(DeltaAmt,0)=0 AND COALESCE(DeltaQty,0)=0"
 		+ " AND "+model.get_TableName()+"_ID=?" 
 		+ " AND "+MCostDetail.COLUMNNAME_C_AcctSchema_ID+"=?" 
@@ -312,7 +312,7 @@ public class CostEngine
 		+" AND "+MCostDetail.COLUMNNAME_M_CostElement_ID+"=?";
 		MCostDetail cd = new Query(cc.getCtx(), MCostDetail.Table_Name, whereClause, cc.get_TrxName())
 		.setParameters(new Object[]{cc.getPP_Cost_Collector_ID(), M_CostElement_ID})
-		.firstOnly();
+		.first();
 		return cd;
 	}
 
