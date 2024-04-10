@@ -3,6 +3,7 @@ pipeline {
     environment {
         PLUGIN_NAME = "org.idempiere.mfg"
         IDEMPIERE_VERSION = "10.0.0"
+        BRANCH = "master"
     }
     stages {
         stage('Compile') {
@@ -15,7 +16,7 @@ pipeline {
             steps {
                 dir('target-platform') {
                     git branch: '10', url: 'https://github.com/ingeint/idempiere-target-platform-plugin.git'
-					sh './plugin-builder build ../../${PLUGIN_NAME}_v10'
+					sh './plugin-builder build ../../${PLUGIN_NAME}_${BRANCH}'
                     archiveArtifacts artifacts: "target/${PLUGIN_NAME}-${IDEMPIERE_VERSION}.${BUILD_NUMBER}.jar", fingerprint: true
                     
                 }
