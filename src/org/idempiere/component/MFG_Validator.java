@@ -34,6 +34,7 @@ import org.compiere.model.MProduct;
 import org.compiere.model.MRMALine;
 import org.compiere.model.MRequisition;
 import org.compiere.model.MRequisitionLine;
+import org.compiere.model.MSysConfig;
 import org.compiere.model.MWarehouse;
 import org.compiere.model.PO;
 import org.compiere.model.Query;
@@ -128,6 +129,8 @@ public class MFG_Validator extends AbstractEventHandler {
 			log.fine(" topic="+event.getTopic()+" AD_Client_ID="+eventData.getAD_Client_ID()
 					+" AD_Org_ID="+eventData.getAD_Org_ID()+" AD_Role_ID="+eventData.getAD_Role_ID()
 					+" AD_User_ID="+eventData.getAD_User_ID());
+			boolean IsLiberoEnabled = MSysConfig.getBooleanValue("IsLiberoEnabled", true, eventData.getAD_Client_ID());
+			Env.setContext(Env.getCtx(), "#IsLiberoEnabled", IsLiberoEnabled);
 		}
 		else 
 		{
