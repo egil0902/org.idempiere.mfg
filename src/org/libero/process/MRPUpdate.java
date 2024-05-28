@@ -275,8 +275,9 @@ public class MRPUpdate extends SvrProcess
 			+"t.ad_client_id , null as S_Resource_ID, o.C_BPartner_ID"
 			+" FROM C_OrderLine t"
 			+" INNER JOIN C_Order o  ON (o.c_order_id=t.c_order_id)"
+			+" INNER JOIN C_DocumentType dt ON o.C_DocTypeTarget_ID = dt.C_DocType_ID"
 			+" WHERE  (t.QtyOrdered - t.QtyDelivered) <> 0 AND o.DocStatus IN ('IP','CO') AND "
-			+"t.AD_Client_ID=? AND t.AD_Org_ID=? AND t.M_Warehouse_ID= ?";
+			+"t.AD_Client_ID=? AND t.AD_Org_ID=? AND t.M_Warehouse_ID= ? and dt.DocSubTypeSO='SO' ";
 		executeUpdate(sql + sql_insert, params);	
 
 
